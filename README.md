@@ -7,25 +7,40 @@ Mostly used to generate motd message of server hostname.
 ## Run
 
 Install node package:
+
 ```bash
-npm install
+yarn
 ```
 
-Run http server:
+Start http server:
+
 ```bash
-node index.js
+yarn start
 ```
 
 ## Examples
 
-Generate Larry 3D ascii response from message:
+Generate Larry 3D ascii response from text:
+
 ```bash
-curl localhost:3000/ascii\?message\=hello%20world
+curl localhost:3000/ascii\?text\=ragnhild
 ```
 
-Generate motd executable with message and save to file:
+Generate motd executable with text and save to file:
+
 ```bash
-curl localhost:3000/motd\?message\=hello%20world > 20-hostname
+curl localhost:3000/motd\?text\=ragnhild > 20-hostname
+```
+
+## Docker install
+
+Run as a docker container using:
+
+```bash
+docker run -d \
+  --name figlet-http \
+  -p 3000:3000 \
+  ghcr.io/kevinmidboe/figlet-http
 ```
 
 ## Systemd service
