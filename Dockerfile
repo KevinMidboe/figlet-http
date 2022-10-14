@@ -1,4 +1,5 @@
 FROM node:18
+LABEL org.opencontainers.image.source https://github.com/KevinMidboe/figlet-http
 
 RUN mkdir -p /opt/figlet-http/src
 
