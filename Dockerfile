@@ -1,18 +1,14 @@
 FROM node:18
-LABEL org.opencontainers.image.source https://github.com/KevinMidboe/figlet-http
 
-RUN mkdir -p /opt/figlet-http/src
+RUN mkdir -p /opt/figlet-http/lib
 
 WORKDIR /opt/figlet-http
 
-COPY src/ src
-COPY tsconfig.json .
 COPY package.json .
-COPY yarn.lock .
+COPY lib/ lib
 
-RUN yarn
-RUN yarn build
+RUN yarn install --production
 
 EXPOSE 3000
 
-CMD ["yarn", "start"]
+CMD ["node", "lib/app.js"]
