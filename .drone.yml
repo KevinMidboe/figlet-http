@@ -64,11 +64,11 @@ steps:
       password:
         from_secret: GITHUB_PASSWORD
       tags: latest
-    # when:
-    #   event:
-    #     - push
-    #   branch:
-    #     - master
+    when:
+      event:
+        - push
+      branch:
+        - master
 
 trigger:
   event:
