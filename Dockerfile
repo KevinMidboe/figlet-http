@@ -5,13 +5,16 @@ RUN mkdir -p /opt/figlet-http/src
 
 WORKDIR /opt/figlet-http
 
-COPY src/ src
-COPY tsconfig.json .
-COPY package.json .
-COPY yarn.lock .
+# COPY src/ src
+# COPY tsconfig.json .
+# COPY package.json .
+# COPY yarn.lock .
 
-RUN yarn
-RUN yarn build
+COPY lib/ lib
+COPY node_modules/ node_modules
+
+# RUN yarn
+# RUN yarn build
 
 EXPOSE 3000
 
