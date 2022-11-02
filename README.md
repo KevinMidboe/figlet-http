@@ -11,6 +11,11 @@ Install node package:
 ```bash
 yarn
 ```
+Compile typescript files:
+
+```bash
+yarn build
+```
 
 Start http server:
 
