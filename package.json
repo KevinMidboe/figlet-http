@@ -1,9 +1,19 @@
 {
+  "version": "1.0.0",
   "scripts": {
-    "start": "node src/app.js"
+    "build": "tsc",
+    "start": "node lib/app.js"
   },
   "dependencies": {
+    "eslint": "^8.25.0",
+    "eslint-config-airbnb-base": "^15.0.0",
     "express": "^4.18.2",
-    "figlet": "^1.5.2"
+    "figlet": "^1.5.2",
+    "typescript": "^4.8.4"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.2",
+    "@typescript-eslint/eslint-plugin": "^5.40.1",
+    "@typescript-eslint/parser": "^5.40.1"
   }
 }
