@@ -20,10 +20,23 @@ yarn start
 
 ## Examples
 
-Generate Larry 3D ascii response from text:
+Generate Larry 3D figlet response from text:
 
 ```bash
-curl localhost:3000/ascii\?text\=ragnhild
+curl localhost:3000/figlet\?text\=ragnhild
+```
+
+Outputs:
+```
+                             __           ___       __     
+                            /\ \      __ /\_ \     /\ \    
+ _ __    __       __     ___\ \ \___ /\_\\//\ \    \_\ \   
+/\`'__\/'__`\   /'_ `\ /' _ `\ \  _ `\/\ \ \ \ \   /'_` \  
+\ \ \//\ \L\.\_/\ \L\ \/\ \/\ \ \ \ \ \ \ \ \_\ \_/\ \L\ \ 
+ \ \_\\ \__/.\_\ \____ \ \_\ \_\ \_\ \_\ \_\/\____\ \___,_\
+  \/_/ \/__/\/_/\/___L\ \/_/\/_/\/_/\/_/\/_/\/____/\/__,_ /
+                  /\____/                                  
+                  \_/__/
 ```
 
 Generate motd executable with text and save to file:
@@ -31,6 +44,15 @@ Generate motd executable with text and save to file:
 ```bash
 curl localhost:3000/motd\?text\=ragnhild > 20-hostname
 ```
+
+### Options
+Api endpoints `/text` & `/motd` have the following query options:
+
+| query param | type   | description                          | required |
+|-------------|--------|--------------------------------------|----------|
+| text        | string | text to generate                     | yes      |
+| font        | string | select font, get list from /fonts    | no       |
+| width       | number | max character width before linebreak | no       |
 
 ## Docker install
 
@@ -47,20 +69,25 @@ docker run -d \
 
 Example systemd config for running http server.
 
+Clone repo to: `/opt/figlet-http`
+
+
+`/etc/systemd/system/figlet-http.service`
+
 ```
 [Unit]
-Description=Http server for running homename-larry
+Description=Http server for running figlet-http
 
 [Service]
-WorkingDirectory=/opt/hostname-larry
-ExecStart=/usr/bin/node index.js
+WorkingDirectory=/opt/figlet-http
+ExecStart=/usr/bin/yarn start
 Restart=always
 # Restart service after 10 seconds if node service crashes
 RestartSec=10
 # Output to syslog
 StandardOutput=syslog
 StandardError=syslog
-SyslogIdentifier=hostname-larry
+SyslogIdentifier=figlet-http
 
 [Install]
 WantedBy=multi-user.target
