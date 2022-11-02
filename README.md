@@ -56,14 +56,25 @@ Api endpoints `/text` & `/motd` have the following query options:
 
 ## Docker install
 
-Run as a docker container using:
+Run as a docker container from github container registry:
 
 ```bash
-docker run -d \
+sudo docker run -d \
   --name figlet-http \
   -p 3000:3000 \
   ghcr.io/kevinmidboe/figlet-http
 ```
+
+Run as docker locally:
+```bash
+yarn build; \
+sudo docker build -t figlet-http .; \
+sudo docker run -d \
+  --name figlet-http \
+  -p 3000:3000 \
+  figlet-http
+```
+
 
 ## Systemd service
 
