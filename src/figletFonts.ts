@@ -1,25 +1,24 @@
-import figlet from "figlet";
-import IFigletOptions from "./interfaces/IFigletOptions";
-import { UnexpectedFigletError } from './errors'
+import figlet from 'figlet';
+import IFigletOptions from './interfaces/IFigletOptions';
+import { UnexpectedFigletError } from './errors';
 
 class FigletFonts {
-
   cachedFonts: Array<string>;
-  defaultFontOptions: IFigletOptions
+  defaultFontOptions: IFigletOptions;
 
   constructor() {
     this.cachedFonts = [];
     this.defaultFontOptions = {
-      font: "Larry 3D",
-      horizontalLayout: "default",
-      verticalLayout: "default",
+      font: 'Larry 3D',
+      horizontalLayout: 'default',
+      verticalLayout: 'default',
       width: 80,
       whitespaceBreak: true,
     };
   }
 
   static sanitizeLarry(text: string) {
-    return text.replaceAll("L", "_");
+    return text.replaceAll('L', '_');
   }
 
   generateText(text: string, options: IFigletOptions): Promise<string> {
@@ -34,7 +33,7 @@ class FigletFonts {
           return reject(new UnexpectedFigletError(err));
         }
 
-        resolve(data);
+        return resolve(data);
       });
     });
   }
@@ -50,7 +49,7 @@ class FigletFonts {
           return reject(new UnexpectedFigletError(err));
         }
 
-        resolve(fonts);
+        return resolve(fonts);
       });
     });
   }

@@ -1,9 +1,9 @@
 class MissingTextError extends Error {
-  error: string
-  statusCode: number
+  error: string;
+  statusCode: number;
 
   constructor(error = null) {
-    const message = `Missing query parameter 'text'.`;
+    const message = 'Missing query parameter \'text\'.';
     super(message);
 
     this.error = error;
@@ -12,8 +12,8 @@ class MissingTextError extends Error {
 }
 
 class FontNotFoundError extends Error {
-  error: string
-  statusCode: number
+  error: string;
+  statusCode: number;
 
   constructor(font, error = null) {
     const message = `Font '${font}' not found. Check /fonts.`;
@@ -25,23 +25,23 @@ class FontNotFoundError extends Error {
 }
 
 class UnexpectedFigletError extends Error {
-  error: string
-  statusCode: number
+  error: string;
+  statusCode: number;
 
   constructor(error) {
-    const message = "Unexpected error from figlet!"
-    super(message)
+    const message = 'Unexpected error from figlet!';
+    super(message);
 
     this.error = error;
-    this.statusCode = 500
+    this.statusCode = 500;
 
-    console.log(message)
-    console.log(error)
+    console.log(message); // eslint-disable-line no-console
+    console.log(error); // eslint-disable-line no-console
   }
 }
 
 export {
   MissingTextError,
   FontNotFoundError,
-  UnexpectedFigletError
+  UnexpectedFigletError,
 };

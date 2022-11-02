@@ -9,6 +9,7 @@
     "eslint-config-airbnb-base",
     "plugin:@typescript-eslint/recommended"
   ],
+
   "plugins": ["@typescript-eslint"],
   "rules": {
     "lines-between-class-members": [
@@ -24,8 +25,17 @@
       }
     ],
     "no-promise-executor-return": 1,
+    "import/extensions": "off",
+    "max-classes-per-file": "off",
     "no-shadow": "off",
     "no-underscore-dangle": "off",
     "@typescript-eslint/no-var-requires": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".ts"]
+      }
+    }
   }
 }
